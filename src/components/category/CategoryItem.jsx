@@ -11,8 +11,10 @@ export const CategoryItem = ({
         <img src={img} className="card-img-top" alt={category} />
         <div className="card-body text-center">
           <h5 className="card-title">{category}</h5>
-          <p className="card-text"></p>
-          <Link className="btn btn-primary">Watch this category</Link>
+          <p className="card-text">{descr.slice(0, 100)}...</p>
+          <Link to={`/category/${category}`} className="btn btn-primary">
+            Watch this category
+          </Link>
         </div>
       </div>
     </div>

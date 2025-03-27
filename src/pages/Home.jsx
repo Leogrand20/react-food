@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import { getAllCategories } from '../../api'
 import { Preloader } from '../components/preloader/Preloader'
@@ -10,14 +10,44 @@ export const Home = ({}) => {
   const [filteredCatalogue, setFilteredCatalogue] = useState([])
   const { search } = useLocation()
   const navigate = useNavigate()
+  const [isPending, startTransition] = useTransition()
 
-  const handleSearch = () => {}
+  const handleSearch = (text) => {
+    setFilteredCatalogue(
+      catalogue.filter(({ strCategory }) => {
+        strCategory.toLowerCase().includes(text.toLowerCase())
+      }),
+    )
 
-  useEffect(() => {}, [])
+    navigate(`/search=${text}`, { relative: 'path' })
+  }
+
+  useEffect(() => {
+    startTransition(() => {
+      getAllCategories().then((data) => {
+        setCatalogue(data)
+        setFilteredCatalogue(
+          search
+            ? data.filter(({ strCategory }) =>
+                strCategory
+                  .toLowerCase()
+                  .includes(search.split('=')[1].toLowerCase()),
+              )
+            : data,
+        )
+      })
+    })
+  }, [search])
 
   return (
     <>
-      <Search />
+      <Search onSearch={handleSearch} />
+
+      {isPending ? (
+        <Preloader />
+      ) : (
+        <CategoryList catalogue={filteredCatalogue} />
+      )}
     </>
   )
 }
