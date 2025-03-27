@@ -1,5 +1,6 @@
 import { useEffect, useState, useTransition } from 'react'
 import { useLocation, useNavigate } from 'react-router'
+
 import { getAllCategories } from '../../api'
 import { Preloader } from '../components/preloader/Preloader'
 import { CategoryList } from '../components/category/CategoryList'

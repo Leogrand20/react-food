@@ -1,5 +1,6 @@
 import { useEffect, useState, useTransition } from 'react'
 import { useNavigate, useParams } from 'react-router'
+
 import { getFilteredByCategories } from '../../api'
 import { Preloader } from '../components/preloader/Preloader'
 import { MealsList } from '../components/meals/MealsList'
