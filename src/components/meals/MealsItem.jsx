@@ -7,7 +7,9 @@ export const MealsItem = ({ idMeal: id, strMealThumb: img, strMeal: name }) => {
         <img src={img} className="card-img-top" alt={name} />
         <div className="card-body text-center">
           <h5 className="card-title">{name}</h5>
-          <Link className="btn btn-primary">Watch this recipe</Link>
+          <Link to={`/recipe/${id}`} className="btn btn-primary">
+            Watch this recipe
+          </Link>
         </div>
       </div>
     </div>
