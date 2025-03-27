@@ -19,23 +19,28 @@ export const Home = ({}) => {
       }),
     )
 
-    navigate(`/search=${text}`, { relative: 'path' })
+    navigate(`/?search=${text}`, { relative: 'path' })
   }
 
   useEffect(() => {
     startTransition(() => {
-      getAllCategories().then((data) => {
-        setCatalogue(data)
-        setFilteredCatalogue(
-          search
-            ? data.filter(({ strCategory }) =>
-                strCategory
-                  .toLowerCase()
-                  .includes(search.split('=')[1].toLowerCase()),
-              )
-            : data,
-        )
-      })
+      {
+        !catalogue.length
+      }
+      {
+        getAllCategories().then((data) => {
+          setCatalogue(data)
+          setFilteredCatalogue(
+            search
+              ? data.filter(({ strCategory }) =>
+                  strCategory
+                    .toLowerCase()
+                    .includes(search.split('=')[1].toLowerCase()),
+                )
+              : data,
+          )
+        })
+      }
     })
   }, [search])
 
