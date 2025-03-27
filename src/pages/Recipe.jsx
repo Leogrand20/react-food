@@ -1,16 +1,23 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import { getMealByID } from '../../api'
 import { Preloader } from '../components/preloader/Preloader'
 
 export const Recipe = () => {
+  const { idRecipe } = useParams()
   const navigate = useNavigate()
   const [recipe, setRecipe] = useState({})
+  const [isPending, startTransition] = useTransition()
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    startTransition(() => {
+      getMealByID(idRecipe).then((data) => {
+        setRecipe(data)
+      })
+    })
+  }, [idRecipe])
 
   const {
-    idMeal: id,
     strMealThumb: img,
     strMeal: name,
     strInstructions: descr,
@@ -18,13 +25,19 @@ export const Recipe = () => {
     strArea: area,
   } = recipe
 
+  let columnNumber = 0
+
   return (
     <>
-      <button type="button" className="btn btn-warning mb-2">
+      <button
+        type="button"
+        className="btn btn-warning mb-2"
+        onClick={() => navigate(-1)}
+      >
         Go back
       </button>
 
-      {!id ? (
+      {isPending ? (
         <Preloader />
       ) : (
         <div className="card-recipe">
@@ -54,9 +67,11 @@ export const Recipe = () => {
               <tbody className="table-group-divider">
                 {Object.keys(recipe).map((key) => {
                   if (key.includes('Ingredient') && recipe[key]) {
+                    columnNumber++
+
                     return (
                       <tr key={key}>
-                        <th scope="row"></th>
+                        <th scope="row">{columnNumber}</th>
                         <td>{recipe[key]}</td>
                         <td>{recipe[`strMeasure${key.slice(13)}`]}</td>
                       </tr>
@@ -71,7 +86,7 @@ export const Recipe = () => {
                 width="600px"
                 height="350px"
                 title={idRecipe}
-                src={`https://www.youtube.com/embed/`}
+                src={`https://www.youtube.com/embed/${link.slice(-11)}`}
                 allowFullScreen
               ></iframe>
             )}
