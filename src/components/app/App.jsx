@@ -7,7 +7,7 @@ import { Home } from '../../pages/Home'
 import { Category } from '../../pages/Category'
 import { Recipe } from '../../pages/Recipe'
 import { Footer } from '../../layouts/Footer'
-import { NotFound } from '../../pages/Notfound'
+import { NotFound } from '../../pages/NotFound'
 
 import './App.css'
 
