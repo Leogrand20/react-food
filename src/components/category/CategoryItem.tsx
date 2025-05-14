@@ -1,6 +1,9 @@
+import { FC } from 'react'
 import { Link } from 'react-router'
 
-export const CategoryItem = ({
+import { CategoryItemProps } from '../../types/categories'
+
+export const CategoryItem: FC<CategoryItemProps> = ({
   strCategoryThumb: img,
   strCategory: category,
   strCategoryDescription: descr,

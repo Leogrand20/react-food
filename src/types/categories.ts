@@ -10,3 +10,5 @@ export type Categories = ICategory[]
 export type CategoryListProps = {
   catalogue: Categories
 }
+
+export type CategoryItemProps = Omit<ICategory, 'idCategory'>
