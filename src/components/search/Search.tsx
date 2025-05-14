@@ -1,7 +1,8 @@
 import { FC, FormEvent, useState } from 'react'
 
-import './Search.css'
 import { SearchProps } from '../../types/search'
+
+import './Search.css'
 
 export const Search: FC<SearchProps> = ({ onSearch }) => {
   const [value, setValue] = useState('')
