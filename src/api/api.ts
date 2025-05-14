@@ -1,7 +1,8 @@
 import { API_URL } from './config'
 
 import { Categories } from '../types/categories'
-import { Meal, Meals } from '../types/meals'
+import { Meals } from '../types/meals'
+import { IRecipe } from '../types/recipe'
 
 const getAllCategories = async (): Promise<Categories> => {
   const res = await fetch(API_URL + 'categories.php')
@@ -17,7 +18,7 @@ const getFilteredByCategories = async (catName: string): Promise<Meals> => {
   return json.meals
 }
 
-const getMealByID = async (mealId: string): Promise<Meal> => {
+const getMealByID = async (mealId: string): Promise<IRecipe> => {
   const res = await fetch(API_URL + 'lookup.php?i=' + mealId)
   const json = await res.json()
 

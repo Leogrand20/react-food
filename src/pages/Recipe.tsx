@@ -3,18 +3,21 @@ import { useParams, useNavigate } from 'react-router'
 
 import { getMealByID } from '../api/api'
 import { Preloader } from '../components/preloader/Preloader'
+import { IRecipe } from '../types/recipe'
 
 export const Recipe = () => {
   const { idRecipe } = useParams()
   const navigate = useNavigate()
-  const [recipe, setRecipe] = useState({})
+  const [recipe, setRecipe] = useState<IRecipe>({})
   const [isPending, startTransition] = useTransition()
 
   useEffect(() => {
     startTransition(() => {
-      getMealByID(idRecipe).then((data) => {
-        setRecipe(data)
-      })
+      if (idRecipe) {
+        getMealByID(idRecipe).then((data) => {
+          setRecipe(data)
+        })
+      }
     })
   }, [idRecipe])
 
@@ -43,7 +46,11 @@ export const Recipe = () => {
       ) : (
         <div className="card-recipe">
           <div className="card-recipe__img">
-            <img src={img} className="img-fluid rounded-start" alt={name} />
+            <img
+              src={String(img)}
+              className="img-fluid rounded-start"
+              alt={String(name)}
+            />
 
             {area && (
               <h5 className="card-title mt-2">

@@ -1,8 +1,8 @@
-export interface Category {
+export interface ICategory {
   idCategory: string
   strCategory: string
   strCategoryThumb: string
   strCategoryDescription: string
 }
 
-export type Categories = Category[]
+export type Categories = ICategory[]

@@ -1,7 +1,7 @@
-export interface Meal {
+export interface IMeal {
   strMeal: string
   strMealThumb: string
   idMeal: string
 }
 
-export type Meals = Meal[]
+export type Meals = IMeal[]

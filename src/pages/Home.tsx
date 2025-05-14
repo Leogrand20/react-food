@@ -1,10 +1,11 @@
 import { useEffect, useState, useTransition } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 
-import { getAllCategories } from '../api/api'
 import { Preloader } from '../components/preloader/Preloader'
 import { CategoryList } from '../components/category/CategoryList'
 import { Search } from '../components/search/Search'
+
+import { getAllCategories } from '../api/api'
 import { Categories } from '../types/categories'
 
 export const Home = ({}) => {
