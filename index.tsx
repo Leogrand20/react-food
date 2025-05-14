@@ -5,10 +5,10 @@ import { BrowserRouter } from 'react-router'
 import { App } from './src/components/app/App'
 import '@css/index.css'
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )
