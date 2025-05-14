@@ -27,7 +27,7 @@ export const Category = () => {
         }
       }
     })
-  }, [catName])
+  }, [catName, meals.length])
 
   return (
     <>

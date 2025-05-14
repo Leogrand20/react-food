@@ -8,7 +8,7 @@ import { Search } from '../components/search/Search'
 import { getAllCategories } from '../api/api'
 import { Categories } from '../types/categories'
 
-export const Home = ({}) => {
+export const Home = () => {
   const [catalogue, setCatalogue] = useState<Categories>([])
   const [filteredCatalogue, setFilteredCatalogue] = useState(catalogue)
   const { search } = useLocation()
@@ -27,25 +27,20 @@ export const Home = ({}) => {
 
   useEffect(() => {
     startTransition(() => {
-      {
-        !catalogue.length
-      }
-      {
-        getAllCategories().then((data) => {
-          setCatalogue(data)
-          setFilteredCatalogue(
-            search
-              ? data.filter(({ strCategory }) =>
-                  strCategory
-                    .toLowerCase()
-                    .includes(search.split('=')[1]!.toLowerCase())
-                )
-              : data
-          )
-        })
-      }
+      getAllCategories().then((data) => {
+        setCatalogue(data)
+        setFilteredCatalogue(
+          search
+            ? data.filter(({ strCategory }) =>
+                strCategory
+                  .toLowerCase()
+                  .includes(search.split('=')[1]!.toLowerCase())
+              )
+            : data
+        )
+      })
     })
-  }, [search])
+  }, [search, catalogue.length])
 
   return (
     <>
