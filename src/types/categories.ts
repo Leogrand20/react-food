@@ -6,3 +6,7 @@ export interface ICategory {
 }
 
 export type Categories = ICategory[]
+
+export type CategoryListProps = {
+  catalogue: Categories
+}
