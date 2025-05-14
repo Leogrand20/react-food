@@ -4,10 +4,11 @@ import { useNavigate, useParams } from 'react-router'
 import { getFilteredByCategories } from '../api/api'
 import { Preloader } from '../components/preloader/Preloader'
 import { MealsList } from '../components/meals/MealsList'
+import { Meals } from '../types/meals'
 
 export const Category = () => {
   const { catName } = useParams()
-  const [meals, setMeals] = useState([])
+  const [meals, setMeals] = useState<Meals>([])
   const navigate = useNavigate()
   const [isPending, startTransition] = useTransition()
 
@@ -18,9 +19,11 @@ export const Category = () => {
   useEffect(() => {
     startTransition(() => {
       if (!meals.length) {
-        getFilteredByCategories(catName).then((data) => {
-          setMeals(data)
-        })
+        if (catName) {
+          getFilteredByCategories(catName).then((data) => {
+            setMeals(data)
+          })
+        }
       }
     })
   }, [catName])

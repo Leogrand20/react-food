@@ -1,4 +1,3 @@
-import * as bootstrap from 'bootstrap'
 import { Routes, Route } from 'react-router'
 
 import { Header } from '../../layouts/Header'

@@ -5,15 +5,16 @@ import { getAllCategories } from '../api/api'
 import { Preloader } from '../components/preloader/Preloader'
 import { CategoryList } from '../components/category/CategoryList'
 import { Search } from '../components/search/Search'
+import { Categories } from '../types/categories'
 
 export const Home = ({}) => {
-  const [catalogue, setCatalogue] = useState([])
-  const [filteredCatalogue, setFilteredCatalogue] = useState([])
+  const [catalogue, setCatalogue] = useState<Categories>([])
+  const [filteredCatalogue, setFilteredCatalogue] = useState(catalogue)
   const { search } = useLocation()
   const navigate = useNavigate()
   const [isPending, startTransition] = useTransition()
 
-  const handleSearch = (text) => {
+  const handleSearch = (text: string) => {
     setFilteredCatalogue(
       catalogue.filter(({ strCategory }) => {
         strCategory.toLowerCase().includes(text.toLowerCase())
@@ -36,7 +37,7 @@ export const Home = ({}) => {
               ? data.filter(({ strCategory }) =>
                   strCategory
                     .toLowerCase()
-                    .includes(search.split('=')[1].toLowerCase()),
+                    .includes(search.split('=')[1]!.toLowerCase()),
                 )
               : data,
           )

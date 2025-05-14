@@ -1,7 +1,7 @@
 import { API_URL } from './config'
 
-import { Categories, Category } from '../types/categories'
-import { Meal } from '../types/meals'
+import { Categories } from '../types/categories'
+import { Meal, Meals } from '../types/meals'
 
 const getAllCategories = async (): Promise<Categories> => {
   const res = await fetch(API_URL + 'categories.php')
@@ -10,7 +10,7 @@ const getAllCategories = async (): Promise<Categories> => {
   return json.categories
 }
 
-const getFilteredByCategories = async (catName: string): Promise<Category> => {
+const getFilteredByCategories = async (catName: string): Promise<Meals> => {
   const res = await fetch(API_URL + 'filter.php?c=' + catName)
   const json = await res.json()
 
