@@ -19,7 +19,7 @@ export const Home = ({}) => {
     setFilteredCatalogue(
       catalogue.filter(({ strCategory }) => {
         strCategory.toLowerCase().includes(text.toLowerCase())
-      }),
+      })
     )
 
     navigate(`/?search=${text}`, { relative: 'path' })
@@ -38,9 +38,9 @@ export const Home = ({}) => {
               ? data.filter(({ strCategory }) =>
                   strCategory
                     .toLowerCase()
-                    .includes(search.split('=')[1]!.toLowerCase()),
+                    .includes(search.split('=')[1]!.toLowerCase())
                 )
-              : data,
+              : data
           )
         })
       }

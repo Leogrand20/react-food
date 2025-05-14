@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { FC, FormEvent, useState } from 'react'
 
 import './Search.css'
+import { SearchProps } from '../../types/search'
 
-export const Search = ({ onSearch }) => {
+export const Search: FC<SearchProps> = ({ onSearch }) => {
   const [value, setValue] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     onSearch(value)
