@@ -1,6 +1,12 @@
+import { FC } from 'react'
 import { Link } from 'react-router'
+import { MealsItemProps } from '../../types/meals'
 
-export const MealsItem = ({ idMeal: id, strMealThumb: img, strMeal: name }) => {
+export const MealsItem: FC<MealsItemProps> = ({
+  idMeal: id,
+  strMealThumb: img,
+  strMeal: name,
+}) => {
   return (
     <div className="col">
       <div className="card h-100 border-warning p-2">

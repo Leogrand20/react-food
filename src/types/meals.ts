@@ -5,3 +5,9 @@ export interface IMeal {
 }
 
 export type Meals = IMeal[]
+
+export type MealsListProps = {
+  meals: Meals
+}
+
+export type MealsItemProps = IMeal
