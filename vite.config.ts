@@ -1,11 +1,10 @@
-import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
 import { resolve } from 'path'
-
-import Inspect from 'vite-plugin-inspect'
+import { defineConfig } from 'vite'
 import copy from 'vite-plugin-cp'
 import htmlTemplate from 'vite-plugin-html-template-mpa'
+import Inspect from 'vite-plugin-inspect'
 import legacy from 'vite-plugin-legacy-swc'
-import react from '@vitejs/plugin-react-swc'
 
 const chunkSize = 1024
 

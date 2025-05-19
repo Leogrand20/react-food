@@ -1,8 +1,7 @@
-import { API_URL } from './config'
-
 import { Categories } from '../types/categories'
 import { Meals } from '../types/meals'
 import { IRecipe } from '../types/recipe'
+import { API_URL } from './config'
 
 const getAllCategories = async (): Promise<Categories> => {
   const res = await fetch(API_URL + 'categories.php')

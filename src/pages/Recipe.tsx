@@ -1,5 +1,5 @@
 import { useEffect, useState, useTransition } from 'react'
-import { useParams, useNavigate } from 'react-router'
+import { useNavigate,useParams } from 'react-router'
 
 import { getMealByID } from '../api/api'
 import { Preloader } from '../components/preloader/Preloader'

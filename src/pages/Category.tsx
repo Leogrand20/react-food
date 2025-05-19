@@ -1,10 +1,9 @@
 import { useEffect, useState, useTransition } from 'react'
 import { useNavigate, useParams } from 'react-router'
 
-import { Preloader } from '../components/preloader/Preloader'
-import { MealsList } from '../components/meals/MealsList'
-
 import { getFilteredByCategories } from '../api/api'
+import { MealsList } from '../components/meals/MealsList'
+import { Preloader } from '../components/preloader/Preloader'
 import { Meals } from '../types/meals'
 
 export const Category = () => {

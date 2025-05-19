@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Link } from 'react-router'
+
 import { MealsItemProps } from '../../types/meals'
 
 export const MealsItem: FC<MealsItemProps> = ({

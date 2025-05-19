@@ -1,12 +1,12 @@
-import { Routes, Route } from 'react-router'
+import { Route,Routes } from 'react-router'
 
+import { Footer } from '../../layouts/Footer'
 import { Header } from '../../layouts/Header'
 import { Main } from '../../layouts/Main'
-import { Home } from '../../pages/Home'
 import { Category } from '../../pages/Category'
-import { Recipe } from '../../pages/Recipe'
-import { Footer } from '../../layouts/Footer'
+import { Home } from '../../pages/Home'
 import { NotFound } from '../../pages/NotFound'
+import { Recipe } from '../../pages/Recipe'
 
 import './App.css'
 
